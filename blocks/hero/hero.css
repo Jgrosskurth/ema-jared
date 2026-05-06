@@ -1,3 +1,7 @@
+.hero-container {
+  padding: 0;
+}
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -5,7 +9,7 @@
 
 .hero {
   position: relative;
-  min-height: 500px;
+  min-height: 85vh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -25,51 +29,53 @@
 
 .hero .hero-content {
   position: relative;
-  z-index: 1;
-  padding: 40px 24px;
-  max-width: 600px;
+  z-index: 2;
+  padding: 48px 24px;
+  max-width: 480px;
   color: #fff;
-}
-
-.hero .hero-content::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
 }
 
 .hero h1,
 .hero h2,
 .hero h3 {
   color: #fff;
+  font-family: var(--display-font-family);
+  font-weight: 400;
+  font-style: italic;
   margin-top: 0;
+  margin-bottom: 12px;
+  line-height: 1.1;
 }
 
 .hero h1 {
-  font-family: var(--display-font-family);
-  font-size: var(--heading-font-size-xxl);
-  font-weight: 400;
-  line-height: 1.1;
-  margin-bottom: 16px;
+  font-size: 32px;
 }
 
 .hero p {
-  color: #fff;
-  font-size: var(--body-font-size-m);
-  line-height: 1.5;
-  margin-bottom: 24px;
+  color: rgb(255 255 255 / 85%);
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
 }
 
-.hero .hero-content .button-wrapper {
-  display: inline-flex;
-  gap: 12px;
-  flex-wrap: wrap;
+.hero .hero-eyebrow {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+  opacity: 0.7;
+  font-style: normal;
+  font-family: var(--body-font-family);
 }
 
 .hero a.button:any-link {
   border-color: #fff;
   color: #fff;
   background-color: transparent;
+  font-size: 10px;
+  padding: 8px 20px;
+  letter-spacing: 0.14em;
 }
 
 .hero a.button:any-link:hover {
@@ -88,17 +94,13 @@
   color: #fff;
 }
 
-.hero .hero-eyebrow {
-  font-size: var(--body-font-size-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
-  opacity: 0.85;
-}
-
 @media (width >= 600px) {
   .hero {
-    min-height: 600px;
+    min-height: 90vh;
+  }
+
+  .hero h1 {
+    font-size: 38px;
   }
 
   .hero .hero-content {
@@ -108,13 +110,44 @@
 
 @media (width >= 900px) {
   .hero {
-    min-height: 680px;
+    min-height: 92vh;
+  }
+
+  .hero h1 {
+    font-size: 44px;
   }
 
   .hero .hero-content {
     padding: 80px 60px;
-    max-width: 650px;
+    max-width: 520px;
   }
+
+  .hero p {
+    font-size: 13px;
+  }
+}
+
+/* variant: hero with gradient overlay (bottom fade) */
+.hero.gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / 55%) 0%,
+    rgb(0 0 0 / 30%) 30%,
+    transparent 60%
+  );
+  z-index: 1;
+}
+
+/* variant: hero with full dark overlay */
+.hero.overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-dark);
+  z-index: 1;
 }
 
 /* variant: hero centered */
@@ -125,39 +158,13 @@
 }
 
 .hero.center .hero-content {
-  max-width: 800px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* variant: hero with dark overlay */
-.hero.overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--overlay-dark);
-  z-index: 0;
-}
-
-.hero.overlay .hero-content {
-  z-index: 1;
-}
-
-/* variant: hero with gradient overlay */
-.hero.gradient::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgb(0 0 0 / 60%) 0%, transparent 60%);
-  z-index: 0;
-}
-
-.hero.gradient .hero-content {
-  z-index: 1;
-}
-
-/* variant: hero with side content (split layout) */
+/* variant: hero split */
 .hero.split {
   display: grid;
   grid-template-columns: 1fr;
