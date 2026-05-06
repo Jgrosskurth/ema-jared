@@ -1,0 +1,97 @@
+.collection-hero-container .collection-hero-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.collection-hero .collection-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 500px;
+}
+
+.collection-hero .collection-hero-image {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.collection-hero .collection-hero-image picture {
+  display: block;
+  height: 100%;
+}
+
+.collection-hero .collection-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-hero .collection-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 24px;
+  background-color: var(--brand-cream);
+}
+
+.collection-hero .collection-hero-content h1,
+.collection-hero .collection-hero-content h2 {
+  font-family: var(--display-font-family);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--heading-font-size-xl);
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+.collection-hero .collection-hero-content p {
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+  color: var(--dark-color);
+  max-width: 500px;
+}
+
+.collection-hero .collection-hero-content .button-wrapper {
+  margin-top: 24px;
+}
+
+@media (width >= 900px) {
+  .collection-hero .collection-hero-inner {
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+
+  .collection-hero .collection-hero-content {
+    padding: 60px 80px;
+  }
+}
+
+/* variant: reversed (content left, image right) */
+.collection-hero.reversed .collection-hero-inner {
+  direction: rtl;
+}
+
+.collection-hero.reversed .collection-hero-inner > * {
+  direction: ltr;
+}
+
+/* variant: dark (dark background content area) */
+.collection-hero.dark .collection-hero-content {
+  background-color: var(--text-color);
+  color: #fff;
+}
+
+.collection-hero.dark .collection-hero-content h1,
+.collection-hero.dark .collection-hero-content h2,
+.collection-hero.dark .collection-hero-content p {
+  color: #fff;
+}
+
+.collection-hero.dark .collection-hero-content a.button:any-link {
+  border-color: #fff;
+  color: #fff;
+}
+
+.collection-hero.dark .collection-hero-content a.button:any-link:hover {
+  background-color: #fff;
+  color: var(--text-color);
+}

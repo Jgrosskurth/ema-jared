@@ -3,25 +3,182 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
   background-color: var(--background-color);
+  position: relative;
+  overflow: hidden;
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  padding: 12px 0;
+}
+
+.cards .cards-card-body h3,
+.cards .cards-card-body h4 {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.cards .cards-card-body p {
+  font-size: var(--body-font-size-xs);
+  color: var(--muted-text);
+  margin: 4px 0 0;
 }
 
 .cards .cards-card-image {
   line-height: 0;
+  overflow: hidden;
 }
 
 .cards > ul > li img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cards > ul > li:hover img {
+  transform: scale(1.03);
+}
+
+@media (width >= 600px) {
+  .cards > ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (width >= 900px) {
+  .cards > ul {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+/* variant: cards with overlay text */
+.cards.overlay > ul > li {
+  position: relative;
+}
+
+.cards.overlay .cards-card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgb(0 0 0 / 60%) 0%, transparent 100%);
+  color: #fff;
+}
+
+.cards.overlay .cards-card-body h3,
+.cards.overlay .cards-card-body h4 {
+  color: #fff;
+}
+
+/* variant: category cards (horizontal scroll on mobile) */
+.cards.categories > ul {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+}
+
+.cards.categories > ul > li {
+  flex: 0 0 120px;
+  scroll-snap-align: start;
+  text-align: center;
+}
+
+.cards.categories > ul > li img {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+.cards.categories .cards-card-body {
+  text-align: center;
+}
+
+@media (width >= 900px) {
+  .cards.categories > ul {
+    justify-content: center;
+    overflow-x: visible;
+  }
+
+  .cards.categories > ul > li {
+    flex: 0 0 140px;
+  }
+}
+
+/* variant: featured cards (large hero-style) */
+.cards.featured > ul {
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards.featured > ul > li {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cards.featured .cards-card-image {
+  position: absolute;
+  inset: 0;
+}
+
+.cards.featured .cards-card-image img {
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+.cards.featured .cards-card-body {
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+  color: #fff;
+}
+
+.cards.featured .cards-card-body h3,
+.cards.featured .cards-card-body h4 {
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-m);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+@media (width >= 600px) {
+  .cards.featured > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* variant: product cards */
+.cards.products .cards-card-body {
+  padding: 12px 8px;
+}
+
+.cards.products .cards-card-body h3,
+.cards.products .cards-card-body h4 {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+  font-size: var(--body-font-size-s);
+}
+
+.cards.products .cards-card-body .cards-card-price {
+  font-weight: 700;
+  color: var(--text-color);
+  margin-top: 8px;
 }

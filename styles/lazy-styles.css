@@ -1,1 +1,67 @@
-/* add global styles that can be loaded post LCP here */
+/* Jared - lazy loaded global styles */
+
+/* utility bar (above nav) */
+.section.utility-bar {
+  background-color: var(--text-color);
+  color: var(--background-color);
+  padding: 8px 0;
+  font-size: var(--body-font-size-xs);
+}
+
+.section.utility-bar a:any-link {
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+.section.utility-bar a:hover {
+  text-decoration: underline;
+}
+
+/* promo banner */
+.section.promo-banner {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  padding: 10px 0;
+  font-size: var(--body-font-size-xs);
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.section.promo-banner a:any-link {
+  color: var(--background-color);
+  font-weight: 500;
+}
+
+/* breadcrumb styling */
+.section.breadcrumb {
+  padding: 12px 0;
+  font-size: var(--body-font-size-xs);
+  color: var(--muted-text);
+}
+
+.section.breadcrumb a:any-link {
+  color: var(--muted-text);
+  text-decoration: none;
+}
+
+.section.breadcrumb a:hover {
+  color: var(--text-color);
+}
+
+/* product grid layout helpers */
+.section.product-grid > div {
+  max-width: 1440px;
+}
+
+/* editorial/content sections */
+.section.editorial {
+  padding: 80px 0;
+}
+
+.section.editorial h2 {
+  font-family: var(--display-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  font-style: italic;
+}
